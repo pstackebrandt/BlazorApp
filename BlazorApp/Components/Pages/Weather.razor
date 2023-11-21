@@ -44,13 +44,13 @@ else
         // Simulate asynchronous loading to demonstrate streaming rendering
         await Task.Delay(500);
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
+        var startDate = DateOnly.FromDateTime(DateTime.Now); // current date
         var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
         forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
-            Date = startDate.AddDays(index),
+            Date = startDate.AddDays(index), // each call will create date of the next day
             TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
+            Summary = summaries[Random.Shared.Next(summaries.Length)] // summary is randomly choosen, no connection to temperatue 
         }).ToArray();
     }
 
